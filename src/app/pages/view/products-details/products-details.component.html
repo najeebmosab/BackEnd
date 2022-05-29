@@ -1,0 +1,71 @@
+<div class="container-fluid my-5">
+    <div class="row">
+        <div class="col-md-6">
+
+            <p-galleria #galleria [(value)]="images" [(activeIndex)]="activeIndex" [numVisible]="5" [containerStyle]="{'max-width':'640px'}" [containerClass]="galleriaClass()" [showThumbnails]="showThumbnails" [showItemNavigators]="true" [showItemNavigatorsOnHover]="true"
+                [circular]="true" [autoPlay]="true" [transitionInterval]="7000">
+                <ng-template pTemplate="item" let-item>
+                    <img src="https://localhost:44342/images/productImages/{{item?.path}}" class="img-fluid gallareImg" [ngStyle]="{'width': !fullscreen ? '100%' : '', 'display': !fullscreen ? 'block' : ''}" />
+                </ng-template>
+                <ng-template pTemplate="thumbnail" let-item>
+                    <div class="grid grid-nogutter justify-content-center">
+                        <img src="https://localhost:44342/images/productImages/{{item?.path}}" class="img-fluid gallareImgs" />
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer" let-item>
+                    <div class="custom-galleria-footer">
+                        <button type="button" pButton icon="pi pi-list" (click)="onThumbnailButtonClick()"></button>
+                        <span *ngIf="images" class="title-container">
+                        <span>{{activeIndex + 1}}/{{images.length}}</span>
+                        <span class="title">{{images[activeIndex].title}}</span>
+                        <span>{{images[activeIndex].alt}}</span>
+                        </span>
+                        <button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()" class="fullscreen-button"></button>
+                    </div>
+                </ng-template>
+            </p-galleria>
+
+        </div>
+
+        <div class="col-md-6 detailes">
+            <div class="form-group">
+                <h2>{{product?.productName}}</h2>
+            </div>
+
+            <div class="form-group">
+
+                <p>{{product?.description}}</p>
+            </div>
+            <div class="my-3 d-flex justify-content-start align-items-center">
+
+
+                <span *ngIf="nameCategory =='Shoes ';else:elseBlock">
+                  <span>
+                    <input type="text" (keyup)="Size($event.target.value)"   [value]="size" class="form-control" placeholder="Please Enter Your Size" name="Size">
+                  </span>
+                </span>
+                <ng-template #elseBlock>
+                    <select (change)="Size($event.target.value)" name="size" id="size" class="p-1" (keyup)="Size()">
+                    <option  value="XL">Please Choese</option>
+                    <option  value="XL">Body Size XL</option>
+                    <option  value="L">Body Size L</option>
+                    <option  value="M">Body Size M</option>
+                    <option  value="S">Body Size S</option>
+                </select>
+                </ng-template>
+
+                <span class="ml-3 ">
+                  <button (click)="Quantity('-')" class=" btn-dark minusepluse">-</button>
+                  <input class="quantity" type="button" [value]="quantity" name="quantity" id="">
+                  <button (click)="Quantity('+')" class=" btn-dark minusepluse">+</button>
+              </span>
+            </div>
+
+            <div class="form-group ">
+                <button class="btn btn-outline-dark" *ngIf="isLogin != null" routerLink="/landing/Cart/BuyNow/{{product?.id}}" [queryParams]="{size:size,quantity:quantity}">Buy Now <del *ngIf="product?.salePrice != 0">${{product?.price}}</del> <span *ngIf="product?.salePrice != 0"> ${{product?.salePrice}} </span> <span *ngIf="product?.salePrice == 0"> ${{product?.price}} </span> </button>
+                <button class="btn btn-outline-dark ml-3" *ngIf="isLogin != null" (click)="AddCart()">Add to cart</button>
+            </div>
+
+        </div>
+    </div>
+</div>

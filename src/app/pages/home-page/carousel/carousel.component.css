@@ -1,0 +1,20 @@
+.carousel-inner {
+    position: relative;
+}
+
+.carousel-item img {
+    height: 100vh !important;
+}
+
+.imgCarousel {
+    object-fit: cover !important;
+    object-position: center center !important;
+}
+
+.shad {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}

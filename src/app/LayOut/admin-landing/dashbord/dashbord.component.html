@@ -1,0 +1,38 @@
+<nav class="navbar bg-light shadow-sm">
+    <div>
+        <button class="btn" (click)="visibleSidebar1 = true">
+      <i div class="fas fa-bars"></i>
+    </button>
+    </div>
+    <div class="adminPhoto dropdown">
+        <img src="assets/img/AdminLTELogo.png" role="button" id="dropdownMenuButton" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" alt="">
+        <i class="fas fa-sort-down" role="button" data-toggle="dropdown" aria-expanded="false"></i>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="" [routerLink]="['/']"><i class="fas fa-power-off"></i> Quit</a>
+        </div>
+    </div>
+</nav>
+<section>
+    <router-outlet></router-outlet>
+</section>
+
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+
+    <div>
+        <div class="bordersBottom">
+            <a href="" [routerLink]="['/Admin/Dashbord/Show-Order']" class="DashbordLogo">
+                <img src="assets/img/AdminLTELogo.png" alt="">
+                <span>Admin Dashbord</span>
+            </a>
+        </div>
+
+        <ul>
+            <li role="button" routerLink="/Admin/Dashbord/Show-Users"><i class="fas fa-user"></i> Users</li>
+            <li role="button" routerLink="/Admin/Dashbord/Show-Products"><i class="fas fa-box"></i> Products</li>
+            <li role="button" routerLink="/Admin/Dashbord/Show-Category"><i class="fas fa-tags"></i> Categories</li>
+            <li role="button" routerLink="/Admin/Dashbord/Show-Brand"><i class="fab fa-amazon"></i> Beands</li>
+            <li role="button" routerLink="/Admin/Dashbord/Show-Order"><i class="fas fa-shopping-cart"></i> Orders</li>
+            <li role="button" routerLink="/Admin/Dashbord/Show-Sliders"><i class="fas fa-desktop"></i> Sliders</li>
+        </ul>
+    </div>
+</p-sidebar>

@@ -1,0 +1,21 @@
+.text-danger:hover {
+    color: #fff !important;
+}
+
+.text-dangerPlus {
+    color: #dc3545!important;
+}
+
+.UpdateBrand {
+    transform: translateX(50%);
+}
+
+@media screen and (max-width:768px) {
+    .UpdateBrand {
+        transform: translateX(0%);
+    }
+}
+
+.card-header2 {
+    padding: 20px 0px;
+}

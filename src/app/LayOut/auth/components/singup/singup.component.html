@@ -1,0 +1,99 @@
+<!-- Start form  -->
+<form [formGroup]="SingUpForm" (ngSubmit)="SingUp()" class="w-100">
+    <!-- start user name input and validation -->
+    <div class="form-floating mb-3">
+        <input name="userName" (keyup)="CheckUser($event.target.value)" formControlName="userName" type="text" required class="form-control" id="userName" placeholder="name@example.com">
+        <label for="floatingInput">User Name</label>
+        <small *ngIf="SingUpForm.controls?.userName?.touched && SingUpForm.controls?.userName?.errors?.minlength" class="form-text  text-danger">User Name must be more than 5 charactors
+    </small>
+
+        <small *ngIf="SingUpForm.controls?.userName?.touched && SingUpForm.controls?.userName?.errors?.required" class="form-text  text-danger">User Name is requierd
+    </small>
+
+
+        <small *ngIf="SingUpForm.controls?.userName?.touched && SingUpForm.controls?.email?.errors?.userName" class="form-text  text-danger">Enter Invaled User Name
+    </small>
+        <small *ngIf="SingUpForm.controls?.userName?.touched && isNotNumber" class="form-text  text-danger">You cannot enter a username that is only numbers
+
+    </small>
+    </div>
+    <!-- end user name input and validation -->
+
+
+    <!-- start email input and validation -->
+    <div class="form-floating mb-3">
+        <input formControlName="email" (keyup)="CheckEmail($event.target.value)" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" type="email" required class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+        <small *ngIf="SingUpForm.controls?.email?.touched && SingUpForm.controls?.email?.errors?.minlength" class="form-text  text-danger">Email min Length is 6
+    </small>
+        <small *ngIf="SingUpForm.controls?.email?.touched && SingUpForm.controls?.email?.errors?.maxlength" class="form-text  text-danger">Email Max Length is 16
+    </small>
+        <small *ngIf="SingUpForm.controls?.email?.touched && SingUpForm.controls?.email?.errors?.required" class="form-text  text-danger">Email is requierd
+    </small>
+        <small *ngIf="SingUpForm.controls?.email?.touched && SingUpForm.controls?.email?.errors?.pattern" class="form-text  text-danger">Enter Invaled Email
+    </small>
+        <small *ngIf="emailFound" class="form-text  text-danger">
+      Try With Onther Email
+    </small>
+    </div>
+    <!-- end email input and validation -->
+
+    <!-- start password input and validation -->
+    <div class="form-floating mb-3">
+        <input formControlName="password" #password name="password" type="password" required class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+
+        <small *ngIf="SingUpForm.controls?.password?.touched && SingUpForm.controls?.password?.errors?.minlength" class="form-text  text-danger">password min Length is 6
+    </small>
+        <small *ngIf="SingUpForm.controls?.password?.touched && SingUpForm.controls?.password?.errors?.maxlength" class="form-text  text-danger">password Max Length is 16
+    </small>
+        <small *ngIf="SingUpForm.controls?.password?.touched && SingUpForm.controls?.password?.errors?.required" class="form-text  text-danger">password is requierd
+    </small>
+        <small *ngIf="SingUpForm.controls?.password?.touched && SingUpForm.controls?.password?.errors?.pattern" class="form-text  text-danger">Password should be atleast 8 characters long and should contain one number,one
+      character and one special character
+    </small>
+    </div>
+    <!-- end password input and validation -->
+
+    <!-- start confirm password input and validation -->
+    <div class="form-floating mb-3">
+        <input formControlName="confirmPassword" name="confirmPassword" (keyup)="CheckEqual($event.target.value)" type="password" required class="form-control" id="floatingconfirmPassword" placeholder="Confirm Password">
+        <label for="floatingPassword">Confirm Password</label>
+
+        <small *ngIf="SingUpForm.controls?.confirmPassword?.touched && notEqual" class="form-text  text-danger">password and
+      Confirm Password does not match
+    </small>
+        <small *ngIf="SingUpForm.controls?.confirmPassword?.touched && SingUpForm.controls?.confirmPassword?.errors?.required" class="form-text  text-danger">password is requierd
+    </small>
+        <small *ngIf="SingUpForm.controls?.confirmPassword?.touched && SingUpForm.controls?.confirmPassword?.errors?.required && !SingUpForm.controls?.confirmPassword?.errors?.required" class="form-text  text-danger">Confirm password is requierd
+    </small>
+
+
+    </div>
+    <!-- end confirm password input and validation -->
+
+    <!-- start Gender input and validation -->
+    <div class="d-flex justify-content-start align-items-center">
+        <h4 class="pr-3">Gender: </h4>
+        <div class="form-check form-check-inline">
+            <div class="d-flex align-items-center">
+                <input class="form-check-input" type="radio" required formControlName="gender" name="gender" id="inlineRadio1" value="1">
+                <label class="form-check-label pb-2" for="gender">Male</label>
+            </div>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <div class="d-flex align-items-center">
+                <input class="form-check-input" type="radio" required formControlName="gender" name="gender" id="inlineRadio2" value="0">
+                <label class="form-check-label pb-2" for="gender">Female</label>
+            </div>
+        </div>
+    </div>
+    <!-- end Gender input and validation -->
+
+
+    <div class="d-flex justify-content-center panel-footer">
+        <button class="btn btn-outline-danger" [disabled]=" SingUpForm.invalid ||notEqual ||emailFound || isNotNumber">SingUp</button>
+    </div>
+</form>
+<!-- End form  -->

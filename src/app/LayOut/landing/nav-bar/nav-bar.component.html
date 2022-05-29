@@ -1,0 +1,106 @@
+<nav class="navbar bg-light shadow-sm">
+    <div class="LogoDiv">
+        <ul>
+            <li>
+                <a href="" class="logo">
+                    <img src="../../../../assets/img/logo/75fa9b17f632646e5ae7fae3cf837761.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+          E-Commerce
+        </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="IconDiv">
+        <ul class="ulIcon">
+
+            <li *ngIf="!isLogin" class="smallScreen">
+                <a href="" class="text-primary" [routerLink]="['/auth']">
+                    Login\Register
+                </a>
+            </li>
+
+            <li id="dropdownMenuButton" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" *ngIf="isLogin">
+                <img src="https://localhost:44342/images/users/{{User?.userImage}}" width="40px" height="40px" style="border-radius: 50%;" alt="">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a *ngIf="isAdmin === 'true'" role="button" class="dropdown-item" href="" [routerLink]="['/Admin']">Dashbord</a>
+                    <a role="button" class="dropdown-item" routerLink="/profile">Profile</a>
+                    <a role="button" class="dropdown-item" href="#" routerLink="/landing/Cart">My Cart</a>
+                    <a role="button" class="dropdown-item" (click)="Logout()">Logout</a>
+                </div>
+            </li>
+            <li class="buttonListMinue">
+                <button class="btn btn-outline-dark" (click)="visibleSidebar1 = true">
+                <i class="fas fa-bars"></i>
+              </button>
+            </li>
+
+            <li class="search ListMinue">
+                <form action="" [formGroup]="Search" (ngSubmit)="Searching()" class="search-box">
+                    <input class="search-input" type="text" formControlName="search" placeholder="Search">
+                    <button type="submit" role="button" class="search-btn">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+    <div class="text-center">
+        <a href="" class="logoSideBar">
+            <img src="../../../../assets/img/logo/75fa9b17f632646e5ae7fae3cf837761.jpg" alt="">
+        </a>
+        <h5>
+            <a href="">
+        E-Commerce
+      </a>
+        </h5>
+    </div>
+    <hr>
+    <div class="searchInputWrapper">
+        <form [formGroup]="Search" (ngSubmit)="Searching()" method="post">
+            <input formControlName="search" class="searchInput" type="text" placeholder='focus here to search'>
+            <button class="searchInputIcon" type="submit">
+        <i class="fa fa-search"></i>
+      </button>
+        </form>
+    </div>
+    <hr>
+    <div class="MinueSideBar">
+        <ul>
+            <li *ngIf="!isLogin" class="text-center">
+                <a href="">
+                    <a class="text-primary" [routerLink]="['/auth']"> Login/Register</a>
+                </a>
+            </li>
+            <li>
+                <a href="" *ngIf="isLogin" routerLink="/landing/Cart">
+                    <i class="fas fa-shopping-cart"></i> My Cart
+                </a>
+            </li>
+            <li *ngIf="isLogin">
+                <a href="" role="button" routerLink="/profile">
+                    <i class="fas fa-user-cog"></i> Profile
+                </a>
+            </li>
+
+            <li *ngIf="isLogin && isAdmin === 'true'">
+                <a href="" [routerLink]="['/Admin']" role="button">
+                    <i class="fas fa-id-badge"></i> Dashboard
+                </a>
+            </li>
+
+            <li *ngIf="isLogin">
+                <a (click)="Logout()" role="button">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</p-sidebar>

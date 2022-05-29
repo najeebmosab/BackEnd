@@ -1,0 +1,17 @@
+.text-danger:hover {
+    color: #fff !important;
+}
+
+.AddBrand {
+    transform: translateX(50%);
+}
+
+@media screen and (max-width:768px) {
+    .AddBrand {
+        transform: translateX(0%);
+    }
+}
+
+.card-header2 {
+    padding: 20px 0px;
+}

@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngIf="massege" class="alert alert-success" role="alert">
+            {{massege}}
+        </div>
+
+        <div class="col-md-6 mt-3 AddProducts">
+            <div class="card-header">
+                <h4>
+                    Update Product
+                    <a href="" routerLink="/Admin/Dashbord/Show-Products" role="button" class="float-right btn btn-sm btn-outline-danger text-danger">Back</a>
+                </h4>
+            </div>
+            <form [formGroup]="UpdateProduct" enctype="multipart/form-data" (ngSubmit)="UpdateProducts()" class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input formControlName="productName" [value]="product?.productName" id="productName" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input formControlName="price" name="" [value]="product?.price" id="price" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="salePrice">Sale Price</label>
+                    <input formControlName="salePrice" [value]="product?.salePrice" id="salePrice" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="actualPrice">Actual Price</label>
+                    <input formControlName="actualPrice" [value]="product?.actualPrice" id="actualPrice" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="imageProduct">Image Product</label>
+                    <input formControlName="imageProduct" (change)="HandelFiles($event)" id="imageProduct" type="file" class="form-control">
+                    <label for="imageProduct">
+                       <img src="https://localhost:44342/images/products/{{product?.imageProduct}}" alt="" width="100px" height="100px">
+                    </label>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="imageProduct">Add Images For One Product</label>
+                    <input formControlName="imageProduct" multiple (change)="HandelFilesForImages($event)" id="imageProduct" type="file" class="form-control">
+
+                    <div class="form-group">
+                        <label for="imageProduct">Images For One Product</label>
+                        <div>
+                            <div *ngFor="let image of images" class="d-inline-block">
+                                <img src="https://localhost:44342/images/productImages/{{image?.path}}" alt="" class="img-fluid px-3 d-block" width="100px" height="100px">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <button type="button" (click)="DeleteImage(image?.id)" class="btn text-dangerPlus"><i class="far fa-trash-alt"></i></button>
+                                    <button routerLink="/Admin/Dashbord/Update-Image/{{image?.id}}" type="button" class="btn text-primary"><i class="far fa-edit"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input formControlName="quantity" [value]="product?.quantity" id="quantity" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="shortDescription">Short Description</label>
+                    <input formControlName="shortDescription" [value]="product?.shortDescription" id="shortDescription" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea formControlName="description" [value]="product?.description" id="description" col="10" rows="5" class="form-control">
+
+                    </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Category Name : <b> {{product?.category?.categoryName}}</b></label>
+                    <select name="" id="" class="form-select" formControlName="categoryId">
+                      <option *ngFor="let category of Categories" value="{{category?.id}}">{{category?.categoryName}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Brand Name :<b> {{product?.brand?.name}}</b></label>
+                    <select name="" id="" class="form-select" formControlName="brandId">
+                      <option *ngFor="let Brand of Brands" value="{{Brand?.id}}">{{Brand?.name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input formControlName="gender" [value]="product?.gender" id="gender" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" class="btn btn-outline-success float-right addBtn">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

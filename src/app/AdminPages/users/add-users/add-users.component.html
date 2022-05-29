@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngIf="massege" class="alert alert-success" role="alert">
+            {{massege}}
+        </div>
+
+        <div class="col-md-6 mt-3 AddUsers">
+            <div class="card-header">
+                <h4>
+                    Add Product
+                    <a href="" [routerLink]="['/Admin/Dashbord/Show-Users']" role="button" class="float-right btn btn-sm btn-outline-danger text-danger">Back</a>
+                </h4>
+            </div>
+            <form [formGroup]="AddUser" enctype="multipart/form-data" (ngSubmit)="AddUsers()" class="shadow-lg p-3 mb-5 bg-white rounded">
+
+                <div class="form-group">
+                    <label for="UserName">User Name</label>
+                    <input formControlName="userName" id="UserName" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="UserEmail">User Email</label>
+                    <input formControlName="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" id="UserEmail" type="email" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="UserPassword">User Password</label>
+                    <input formControlName="password" id="UserPassword" type="password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="Image">Images Users</label>
+                    <input formControlName="userImage" (change)="HandelFiles($event)" id="Image" type="file" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="isAdmin">Is Admin</label>
+                    <input formControlName="isAdmin" id="isAdmin" type="checkbox" class="form-check">
+                </div>
+
+                <div class="form-group">
+                    <h5 for="gender">Gender:</h5>
+                    <div class="form-check form-check-inline">
+                        <div class="d-flex align-items-center">
+                            <input class="form-check-input" type="radio" required formControlName="gender" name="gender" id="inlineRadio1" value="1">
+                            <label class="form-check-label pb-2" for="gender">Male</label>
+                        </div>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <div class="d-flex align-items-center">
+                            <input class="form-check-input" type="radio" required formControlName="gender" name="gender" id="inlineRadio2" value="0">
+                            <label class="form-check-label pb-2" for="gender">Female</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" [disabled]="AddUser.invalid" class="btn btn-outline-success float-right addBtn">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

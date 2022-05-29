@@ -1,0 +1,61 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div *ngIf="massege !=''" class="alert alert-success" role="alert">
+            {{massege}}
+        </div>
+        <div class="col-md-12 p-0">
+            <div class="card-header">
+                <h4>
+                    Show Category
+                    <a href="" routerLink="/Admin/Dashbord/Add-Category" role="button" class="float-right btn btn-sm btn-outline-success text-success">Add Category</a>
+                </h4>
+            </div>
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Category Name</th>
+                        <th>Controller</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Category of Categories |paginate:{id:'listing_pagination',
+                    itemsPerPage:10,
+                    currentPage:page,
+                    totalItems:totalRecords
+                  }">
+                        <td>{{Category?.id}}</td>
+                        <td class="CategoryImg"><img src="https://localhost:44342/images/category/{{Category?.picture}}" alt="">
+                        </td>
+                        <td>{{Category?.categoryName}}</td>
+                        <td>
+                            <a role="button" routerLink="/Admin/Dashbord/Update-Category/{{Category?.id}}" class="btn btn-outline-success text-success btn-sm mx-1"><i class="far fa-edit"></i></a>
+                            <a role="button" routerLink="/Admin/Dashbord/View-Category/{{Category?.id}}" class="btn btn-outline-primary text-primary btn-sm mx-1"><i class="far fa-eye"></i></a>
+                            <button type="button" (click)="DeleteCategory(Category?.id)" class="btn btn-outline-danger btn-sm">
+                              <i class="far fa-trash-alt mx-1"></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event" style="float: right;padding: 10px;">
+            </pagination-controls>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Please Choees Another Category to Save Products" [(visible)]="display" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+    <form [formGroup]="switchCategory">
+        <select name="" class="form-select" id="" formControlName="newCategory">
+          <option *ngFor="let Category of Categories" value="{{Category?.id}}">
+           {{Category?.categoryName}}
+          </option>
+        </select>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayResponsive=false" label="Cancel" styleClass="p-button-text"></p-button>
+        <p-button (click)="UpdateCategory()" label="Dealet And Save" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>

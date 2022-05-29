@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-6 mt-3 AddProducts">
+            <div class="card-header">
+                <h4>
+                    Write your Email To Check It
+                </h4>
+
+            </div>
+            <div *ngIf="massege !=''" class="alert alert-danger" role="alert">
+                {{massege}}
+            </div>
+            <form [formGroup]="EmailForm" (ngSubmit)="CheckEmail()" class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="form-group">
+                    <input type="text" formControlName="Email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" class="form-control" id="CodeSingUp">
+                    <small *ngIf="EmailForm.controls?.Email?.touched && EmailForm.controls?.Email?.errors?.required" class="form-text  text-danger">
+                    Eamil Is Requierd
+                  </small>
+                    <small *ngIf="EmailForm.controls?.email?.touched && EmailForm.controls?.email?.errors?.pattern" class="form-text  text-danger">Enter Invaled Email
+                  </small>
+                </div>
+
+                <div class="form-group">
+                    <div class="card-header2 pb-4">
+                        <button type="submit" class="btn btn-outline-success float-right addBtn">Check</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

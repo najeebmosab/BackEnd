@@ -1,0 +1,20 @@
+<div class="container-fluid bg-light p-5 ">
+    <div class="row">
+        <div class="col-md-4 " *ngFor="let Product of Products;let i = index">
+            <div class="card">
+                <a href="" type="button" role="button">
+                    <img class="img-fluid cardImage" src="https://localhost:44342/images/products/{{Product?.imageProduct}}" alt="">
+                </a>
+                <div class="shad" routerLink="/landing/View/ProductsDetails/{{Product?.id}}" role="button"></div>
+                <span class="tagNew">New</span>
+                <div class="myBodyCard">
+                    <h5>
+                        {{Product?.productName}}
+                    </h5>
+                </div>
+                <button class="cartIcon" (click)="AddCart(Product?.id)"><i class="fas fa-shopping-cart"></i></button>
+                <a type="button" class="eyeIcon" routerLink="/landing/View/ProductsDetails/{{Product?.id}}"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

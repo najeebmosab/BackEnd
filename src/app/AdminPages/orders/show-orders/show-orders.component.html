@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 card-header mt-3">
+            <form action="" [formGroup]="selectGroup" (ngSubmit)="Sorting()">
+                <div class="select">
+                    <select name="" formControlName="selectGroup" multiple="multiple" #sortOrders class="d-inline-block form-select-sm" *ngIf="MonethInYear() <= 12">
+                      <option value=""  disabled selected value >{{toDay|date:'yyyy-MM'}}</option>
+                      <option   *ngFor="let tarek of Tarek" value="{{tarek}}">{{tarek|date:'yyyy-MM'}}</option>
+                    </select>
+                </div>
+                <button hidden type="submit" class="btn btn-outline-success float-right addBtn">Add</button>
+            </form>
+            <h6 class="float-end mr-5"> Total Price For Month: {{TotalPrice |currency}}</h6>
+        </div>
+        <div class="col-12 card-header ">
+            <div>
+                <h4 class="d-inline-block">
+                    My Order
+                </h4>
+                <a routerLink="/Admin/Dashbord/Add-Order" class="btn btn-outline-success  text-success btn-sm float-end">Add
+          Order</a>
+            </div>
+        </div>
+
+        <div class=" col-sm-12 no-gutters">
+            <table class="table table-striped table-responsive-md">
+                <thead class="text-center" style="font-size: 12px;">
+                    <tr>
+                        <th>#</th>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>PostalCode</th>
+                        <th>Phone</th>
+                        <th>Quantity</th>
+                        <th>Size</th>
+                        <th>Total</th>
+                        <th>Is Order</th>
+                        <th>Controller</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center" style="font-size: 13px;">
+                    <tr *ngFor="let Order of Orders   |sortOrders:SortCondition |paginate:{id:'listing_pagination',
+                    itemsPerPage:10,
+                    currentPage:page,
+                    totalItems:totalRecords} ;  let i = index ; ">
+                        <td>{{i+1}} </td>
+                        <td> <img width="100px" height="100px" src="https://localhost:44342/images/products/{{Order?.productImage}}" alt=""></td>
+                        <td>{{Order?.productName}}</td>
+                        <td>{{Order?.order?.name}}</td>
+                        <td>{{Order?.order?.email}}</td>
+                        <td>{{Order?.order?.address}}</td>
+                        <td>{{Order?.order?.city}}</td>
+                        <td>{{Order?.order?.postalCode}}</td>
+                        <td>{{Order?.order?.phone}}</td>
+                        <td>{{Order?.quantity}}</td>
+                        <td>{{Order?.size}}</td>
+                        <td>{{Order?.productPrice|currency}}
+                        </td>
+                        <td>
+                            {{Order?.isOrder}}
+                            <button (click)="ActiveOrder(Order?.id,Order?.order?.email)" type="submit" class="btn btn-outline-success text-success btn-sm">Active Order</button>
+                        </td>
+                        <td class="text-danger">
+                            <button (click)="DeleteOrder(Order?.id)" class="btn btn-outline-danger m-1">
+                <i type="button" class="fas fa-trash-alt"></i>
+              </button>
+                            <button routerLink="/Admin/Dashbord/Update-Order/{{Order?.id}}" class="btn btn-outline-success m-1" style="font-size: 17px;">
+                <i type="button" class="fas fa-edit"></i>
+              </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event" style="float: right;padding: 10px;">
+            </pagination-controls>
+        </div>
+    </div>
+</div>

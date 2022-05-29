@@ -1,0 +1,61 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 mt-5 shadow-sm p-3 mb-3 bg-white rounded">
+            <!-- start  a login and singup customer -->
+
+            <!-- header for login and singup -->
+            <div class="container-fluid pb-3">
+                <div class="row">
+
+                    <div class="col text-center">
+                        <img style="height: 100px;width: 100px;border-radius: 50%;object-fit: cover;object-position: center;" src="../../../../../assets/img/logo/75fa9b17f632646e5ae7fae3cf837761.jpg" alt="">
+                        <h5>OnLine Store</h5>
+                    </div>
+
+                </div>
+            </div>
+            <!-- header for login and singup -->
+
+            <!-- start two click for switch btween a login and singup customer -->
+            <div class="headLogSing ">
+                <div id="MyActiveDiv1" class="active myDiv" (click)="change('login')">
+                    <a>Login</a>
+                    <div class="linea_bajo_nom mt-3 mb-4"></div>
+                </div>
+                <div id="MyActiveDiv2" class="myDiv" (click)="change('singup')">
+                    <a>Sign up</a>
+                    <div class="linea_bajo_nom mt-3 mb-4"></div>
+                </div>
+            </div>
+            <!-- end two click for switch btween a login and singup customer -->
+
+            <div>
+                <!-- if we have error to show it -->
+                <div [ngClass]="{'d-none':emailIsNotCorecct === false,'d-block':emailIsNotCorecct === true}" class="alert alert-danger" role="alert">
+                    {{massege}}
+                </div>
+                <!-- if we have error to show it -->
+
+                <!-- view for login component-->
+                <div *ngIf="rgister=='login'" class="">
+                    <div>
+                        <app-login></app-login>
+                    </div>
+                </div>
+                <!-- view for login component-->
+
+                <!-- view for singup component -->
+                <div *ngIf="rgister=='singup'">
+                    <div class="">
+                        <app-singup></app-singup>
+                    </div>
+                </div>
+                <!-- view for singup component -->
+
+            </div>
+        </div>
+        <!-- End  a login and singup customer -->
+
+    </div>
+</div>

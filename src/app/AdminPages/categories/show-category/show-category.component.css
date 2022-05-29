@@ -1,0 +1,14 @@
+.CategoryImg img {
+    width: 100px;
+    height: 100px;
+    object-fit: fill;
+    object-position: center center;
+}
+
+.text-success:hover {
+    color: #fff !important;
+}
+
+.text-primary:hover {
+    color: #fff !important;
+}

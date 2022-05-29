@@ -1,0 +1,63 @@
+.card {
+    height: 50vh;
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    object-fit: fill;
+    object-position: center center;
+    height: 50vh;
+}
+
+.shad {
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+}
+
+.Sale {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: #2196F3 !important;
+    padding: 5px 8px;
+    border-radius: 5px;
+    color: #ffF;
+    z-index: 2;
+}
+
+.iconCart {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 5px 8px;
+    color: #ffF;
+    z-index: 2;
+    opacity: 0;
+}
+
+.iconeye {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    padding: 5px 8px;
+    color: #ffF;
+    z-index: 2;
+    opacity: 0;
+}
+
+.card:hover .iconCart {
+    opacity: 1;
+    transition: 1s;
+}
+
+.card:hover .iconeye {
+    opacity: 1;
+    transition: 1s;
+}

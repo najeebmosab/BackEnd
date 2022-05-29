@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="alert alert-success" *ngIf="massage" role="alert">
+            {{massage}}
+        </div>
+        <div class="col-md-6">
+            <p-galleria #galleria [(value)]="images" [(activeIndex)]="activeIndex" [numVisible]="5" [containerStyle]="{'max-width':'640px'}" [containerClass]="galleriaClass()" [showThumbnails]="showThumbnails" [showItemNavigators]="true" [showItemNavigatorsOnHover]="true"
+                [circular]="true" [autoPlay]="true" [transitionInterval]="7000">
+                <ng-template pTemplate="item" let-item>
+                    <img src="https://localhost:44342/images/productImages/{{item?.path}}" class="img-fluid gallareImg" [ngStyle]="{'width': !fullscreen ? '100%' : '', 'display': !fullscreen ? 'block' : ''}" />
+                </ng-template>
+                <ng-template pTemplate="thumbnail" let-item>
+                    <div class="grid grid-nogutter justify-content-center">
+                        <img src="https://localhost:44342/images/productImages/{{item?.path}}" class="img-fluid gallareImgs" />
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer" let-item>
+                    <div class="custom-galleria-footer">
+                        <button type="button" pButton icon="pi pi-list" (click)="onThumbnailButtonClick()"></button>
+                        <span *ngIf="images" class="title-container">
+                        <span>{{activeIndex + 1}}/{{images.length}}</span>
+                        <span class="title">{{images[activeIndex].title}}</span>
+                        <span>{{images[activeIndex].alt}}</span>
+                        </span>
+                        <button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()" class="fullscreen-button"></button>
+                    </div>
+                </ng-template>
+            </p-galleria>
+        </div>
+        <div class="col-md-6">
+            <form [formGroup]="formOrder" (ngSubmit)="BuyNow()" class="bg-light shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="form-group">
+                    <h4 class="text-center">Order Details</h4>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Full Name</label>
+                    <input class="form-control" [ngClass]="{'border-danger': formOrder.controls?.name?.touched && formOrder.controls?.name?.errors?.required}" formControlName="name" type="text">
+                    <small *ngIf="formOrder.controls?.name?.touched && formOrder.controls?.name?.errors?.required" class="form-text  text-danger">Full Name is requierd</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input class="form-control" [ngClass]="{'border-danger':formOrder.controls?.address?.touched && formOrder.controls?.address?.errors?.required}" formControlName="address" type="text">
+                    <small *ngIf="formOrder.controls?.address?.touched && formOrder.controls?.address?.errors?.required" class="form-text  text-danger">Address is requierd</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="">City</label>
+                    <input class="form-control" [ngClass]="{'border-danger': formOrder.controls?.city?.touched && formOrder.controls?.city?.errors?.required}" formControlName="city" type="text">
+                    <small *ngIf="formOrder.controls?.city?.touched && formOrder.controls?.city?.errors?.required" class="form-text  text-danger">City is requierd</small>
+                </div>
+                <div class="d-flex">
+                    <div class="form-group w-100">
+                        <label for="">PostalCode</label>
+                        <input class="form-control" [ngClass]="{'border-danger': formOrder.controls?.postalCode?.touched && formOrder.controls?.postalCode?.errors?.required}" formControlName="postalCode" type="text">
+                        <small *ngIf="formOrder.controls?.postalCode?.touched && formOrder.controls?.postalCode?.errors?.required" class="form-text  text-danger">PostalCode is requierd</small>
+                    </div>
+                    <div class="p-1"></div>
+                    <div class="form-group w-100">
+                        <label for="">phone</label>
+                        <input class="form-control" [ngClass]="{'border-danger':formOrder.controls?.phone?.touched && formOrder.controls?.phone?.errors?.required}" formControlName="phone" type="text">
+                        <small *ngIf="formOrder.controls?.phone?.touched && formOrder.controls?.phone?.errors?.required" class="form-text  text-danger">Phone is requierd</small>
+                        <small *ngIf="formOrder.controls?.phone?.touched && formOrder.controls?.phone?.errors?.minlength" class="form-text  text-danger">minimum is 10 number</small>
+                        <small *ngIf="formOrder.controls?.phone?.touched && formOrder.controls?.phone?.errors?.maxlength" class="form-text  text-danger">maximum is 10 number</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" [disabled]="formOrder.invalid" class="btn btn-outline-success float-right addBtn">Buy Now</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

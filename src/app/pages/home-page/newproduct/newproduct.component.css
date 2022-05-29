@@ -1,0 +1,79 @@
+.card {
+    overflow: hidden;
+}
+
+.cardImage {
+    width: 100%;
+}
+
+@media screen and (min-width:1200px) {
+    .cardImage {
+        height: 80vh;
+    }
+    .shad {}
+}
+
+.shad {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+}
+
+.tagNew {
+    background-color: #0d6efd;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+}
+
+.myBodyCard {
+    position: absolute;
+    bottom: 60px;
+    left: -500px;
+    color: #fff;
+    font-weight: 400;
+    z-index: 2;
+}
+
+.card:hover .myBodyCard {
+    left: 10px;
+    transition: 1.2s;
+}
+
+.cartIcon {
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    font-weight: 400;
+    top: 10px;
+    right: -500px;
+    background-color: transparent;
+    border: none;
+}
+
+.card:hover .cartIcon {
+    right: 10px;
+}
+
+.eyeIcon {
+    position: absolute;
+    z-index: 2;
+    color: #fff !important;
+    font-weight: 400;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    opacity: 0;
+}
+
+.card:hover .eyeIcon {
+    transition: 1s;
+    opacity: 1;
+}

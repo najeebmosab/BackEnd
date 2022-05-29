@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="row">
+        <div *ngIf="massage" class="alert alert-success" role="alert">
+            {{massage}}
+        </div>
+        <div class="col-12 card-header mt-3">
+            <div>
+                <h4>
+                    Shopping Cart
+                </h4>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-12 no-gutters">
+            <table class="table table-striped text-center ">
+                <thead class="">
+                    <tr>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Controller</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products;let i = index ">
+                        <td><img role="button" routerLink="/landing/View/ProductsDetails/{{product?.id}}" class="img-fluid img-Cart" src="https://localhost:44342/images/products/{{product?.imageProduct}}" alt=""></td>
+                        <td><a href="" routerLink="/landing/View/ProductsDetails/{{product?.id}}"> {{product?.productName}}</a></td>
+                        <td>
+                            <div *ngIf="product?.salePrice != 0;else elseBlock">
+                                {{product?.salePrice}}
+                            </div>
+                            <ng-template #elseBlock>
+                                {{product?.price}}
+                            </ng-template>
+                        </td>
+
+                        <td>
+                            <button (click)="Quantity('-',DataCartProduct[i]?.id)" class=" btn-dark minusepluse d-block">-</button>
+                            <input class="quantity d-block" type="button" [value]="DataCartProduct[i]?.quantity" name="quantity" id="">
+                            <button (click)="Quantity('+',DataCartProduct[i]?.id)" class=" btn-dark minusepluse d-block">+</button>
+                        </td>
+                        <td class="text-danger" (click)="DeleteProductFromCart(DataCartProduct[i]?.id)"><i type="button" class="fas fa-trash-alt"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3 col-sm-12 shadow-lg p-3 mb-5 h-100 rounded no-gutters checkoutCart">
+            <div>
+                <div class="d-flex justify-content-between px-4 my-3">
+                    <h6>Total Price</h6>
+                    <span>{{TotalPrice |currency}}</span>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div class="d-flex justify-content-between px-4 my-3">
+                    <h6>Sub Price</h6>
+                    <span>{{SubPrice |currency}}</span>
+                </div>
+            </div>
+            <hr>
+
+            <div>
+                <div class="d-flex justify-content-between px-4 my-3">
+                    <h6>Final Price</h6>
+                    <span>{{FinalPrice |currency}}</span>
+                </div>
+            </div>
+            <hr>
+
+            <div>
+                <div class="px-4 my-3 ">
+                    <button routerLink="/landing/Cart/CheckOut" [disabled]="counCart == 0" class="btn btn-outline-primary w-100 text-primary">Check Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col-md-2 my-3">
+            <div class="sort_Card mb-3 ">
+                <button class="card-header d-flex align-items-center justify-content-between" (click)="OpenCloseListSort = !OpenCloseListSort">
+                  <h6>
+                      Sort By
+                  </h6>
+                  <i class="fas fa-chevron-down"></i>
+                 </button>
+
+                <ul class="list-group list-group-flush " role="button" [ngClass]="{'d-block':OpenCloseListSort==true,'d-none':OpenCloseListSort==false}">
+                    <li class="list-Sort lists shadow-sm  bg-white" #filter (click)="Sorting('A',0)">Name : A - Z</li>
+                    <li class="list-Sort lists shadow-sm bg-white" #filter (click)="Sorting('Z',1)"> Name : Z - A</li>
+                    <li class="list-Sort lists shadow-sm bg-white" #filter (click)="Sorting(0,2)">Price : $0 - $100</li>
+                    <li class="list-Sort lists shadow-sm bg-white" #filter (click)="Sorting(100,3)">Price : $100 - $0</li>
+                </ul>
+
+            </div>
+
+            <div class="sort_Card mb-3 shadow-lg bg-light">
+                <button class="card-header d-flex align-items-center justify-content-between" (click)="OpenCloseListCategory = !OpenCloseListCategory">
+                <h6>
+                    ALL Category
+                </h6>
+                <i class="fas fa-chevron-down"></i>
+               </button>
+
+                <ul class="list-group list-group-flush " role="button" [ngClass]="{'d-block':OpenCloseListCategory==true,'d-none':OpenCloseListCategory==false}">
+                    <li class="lists shadow-sm  bg-white" *ngFor="let category of categories;let i = index;">
+                        <div class="d-flex align-items-center justify-content-between" (click)="OpenCloseListBrand(i)">
+                            <h6>
+                                {{category?.categoryName}}
+                            </h6>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <ul class="list-group list-group-flush d-none brand_ul" role="button">
+                            <li class="list-Brands  bg-white" *ngFor="let brand of brands">
+                                <a (click)="CategoryBrand(brand?.id,category?.id)">
+                                {{brand.name}}
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4  col-md-6 my-3 " *ngFor="let product of Products | filter:sort |paginate:{id:'listing_pagination',itemsPerPage:12,currentPage:page,totalItems:totalRecords}">
+                        <div class="card myCard shadow-sm">
+                            <img role="button" src="https://localhost:44342/images/products/{{product?.imageProduct}}" class="card-img-top img-fluid cardImg" alt="..." routerLink="/landing/View/ProductsDetails/{{product?.id}}">
+                            <div class="shad" routerLink="/landing/View/ProductsDetails/{{product?.id}}" role="button">
+
+                            </div>
+                            <div class="card-body">
+                                <a role="button" class="card-title d-block" routerLink="/landing/View/ProductsDetails/{{product?.id}}">{{product?.productName}}</a>
+                                <a class="card-text" routerLink="/landing/View/ProductsDetails/{{product?.id}}">{{product?.shortDescription}}</a>
+
+                                <div class="priceDiv">
+                                    price:
+                                    <span *ngIf="product?.salePrice == 0.00;else:elseBolck"> ${{product?.price}} </span>
+                                    <ng-template #elseBolck>
+                                        <del>${{product?.price}}</del> <span class="pl-3">${{product?.salePrice}}</span>
+                                    </ng-template>
+                                </div>
+                                <button class="btn btn-outline-primary cartBTN" (click)="AddCart(product?.id)"><i class="fas fa-shopping-cart"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+            </pagination-controls>
+        </div>
+    </div>
+</div>

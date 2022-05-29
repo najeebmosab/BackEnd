@@ -1,0 +1,24 @@
+<!-- Start a form for customer log in  -->
+<form [formGroup]="LoginForm" (ngSubmit)="login()">
+
+    <!-- input for Email -->
+    <div class="form-floating mb-3">
+        <input formControlName="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" type="email" required class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+    </div>
+
+    <!-- input for Password -->
+
+    <div class="form-floating mb-3">
+        <input formControlName="password" type="password" required class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+    </div>
+
+    <!-- button for form to start function -->
+
+    <div class="d-flex justify-content-between">
+        <a href="" routerLink="/auth/CheckEmail" class="text-primary">forgot password ?</a>
+        <button class="btn btn-outline-danger ">login</button>
+    </div>
+</form>
+<!-- end a form for customer log in  -->

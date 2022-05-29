@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-6">
+            <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [numVisible]="4" [containerStyle]="{'max-width': '640px'}">
+                <ng-template pTemplate="item" let-item>
+                    <img src="https://localhost:44342/images/productImages/{{item?.path}}" style="width: 100%;" />
+                </ng-template>
+                <ng-template pTemplate="thumbnail" let-item>
+                    <div class="grid grid-nogutter justify-content-center">
+                        <img src="https://localhost:44342/images/productImages/{{item?.path}}" width="100px" height="100px" />
+                    </div>
+                </ng-template>
+            </p-galleria>
+        </div>
+
+        <div class="col-md-6">
+
+        </div>
+
+    </div>
+</div>

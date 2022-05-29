@@ -1,0 +1,15 @@
+.text-success:hover {
+    color: #fff !important;
+}
+
+select {
+    width: 100px;
+}
+
+select[multiple] {
+    height: 30px
+}
+
+select[multiple]:focus {
+    height: auto
+}

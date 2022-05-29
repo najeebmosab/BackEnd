@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngIf="massege" class="alert alert-success" role="alert">
+            {{massege}}
+        </div>
+
+        <div class="col-md-6 mt-3 AddImage">
+            <div class="card-header">
+                <h4>
+                    Update Image
+                    <button (click)="GoBack()" role="button" class="float-right btn btn-sm btn-outline-danger text-danger">Back</button>
+                </h4>
+            </div>
+            <form [formGroup]="UpdateImage" enctype="multipart/form-data" (ngSubmit)="UpdateImages()" class="shadow-lg p-3 mb-5 bg-white rounded">
+
+                <div class="form-group">
+                    <label for="imageProduct">To Change Image</label>
+                    <input formControlName="path" (change)="HandelFiles($event)" id="imageProduct" type="file" class="form-control">
+                    <label for="imageProduct">
+                     <img src="https://localhost:44342/images/productImages/{{Image?.path}}" alt="" width="100px" height="100px">
+                  </label>
+                </div>
+
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" class="btn btn-outline-success float-right addBtn">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

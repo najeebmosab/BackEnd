@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngIf="massege" class="alert alert-success" role="alert">
+            {{massege}}
+        </div>
+
+        <div class="col-md-6 mt-3 UpdateCategory">
+            <div class="card-header">
+                <h4>
+                    Update Catgory
+                    <a href="" routerLink="/Admin/Dashbord/Show-Category" role="button" class="float-right btn btn-sm btn-outline-danger text-danger">Back</a>
+                </h4>
+            </div>
+            <form [formGroup]="UpdateCategory" enctype="multipart/form-data" (ngSubmit)="UpdateCategorys()" class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="form-group">
+                    <label for="categoryName">Category Name</label>
+                    <input formControlName="categoryName" [value]="Category?.categoryName" id="categoryName" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="picture">Image Category</label>
+                    <input formControlName="picture" (change)="HandelFiles($event)" id="picture" type="file" class="form-control">
+                    <label for="picture">
+                     <img src="https://localhost:44342/images/category/{{Category?.picture}}" alt="" width="100px" height="100px">
+                  </label>
+                </div>
+
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" class="btn btn-outline-success float-right addBtn">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

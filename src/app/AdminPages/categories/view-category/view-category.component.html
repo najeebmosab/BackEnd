@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 mt-3 ViewCategory">
+            <div class="card-header">
+                <h4>
+                    Update User
+                    <a href="" [routerLink]="['/Admin/Dashbord/Show-Category']" role="button" class="float-right btn btn-sm btn-outline-danger text-danger">Back</a>
+                </h4>
+            </div>
+            <div class="shadow-lg p-3 mb-5 bg-white rounded text-center">
+
+                <div class="form-group">
+                    <small>
+                   <img src="https://localhost:44342/images/category/{{category?.picture}}" width="200px" height="200px" alt="">
+                  </small>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label for="UserName">Category Name</label>
+                    <h5>{{category?.categoryName}}</h5>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

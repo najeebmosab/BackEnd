@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngIf="massege" class="alert alert-success" role="alert">
+            {{massege}}
+        </div>
+
+        <div class="col-md-6 mt-3 AddProducts ">
+            <div class="card-header">
+                <h4>
+                    Add Orders
+                    <a href="" [routerLink]="['/Admin/Dashbord/Show-Order']" role="button" class="float-right btn btn-sm btn-outline-danger text-danger">Back</a>
+                </h4>
+            </div>
+            <form [formGroup]="AddOrder" enctype="multipart/form-data" (ngSubmit)="AddOrders()" class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="form-group">
+                    <label for="selectUser">User Name</label>
+                    <select name="" id="selectUser" class="form-select" formControlName="userId" [(ngModel)]="ngUserId">//$event.target.value
+                       <option  *ngFor="let user of users" value="{{user?.id}}" >
+                         {{user?.email}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input id="Address" type="text" formControlName="address" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="City">City</label>
+                    <input id="City" type="text" formControlName="city" class="form-control">
+                </div>
+
+                <div class="d-flex">
+                    <div class="form-group w-100">
+                        <label for="Phone">Phone</label>
+                        <input id="Phone" type="text" formControlName="phone" class="form-control">
+                    </div>
+                    <div class="p-2"></div>
+                    <div class="form-group w-100">
+                        <label for="PostalCode">PostalCode</label>
+                        <input id="PostalCode" type="text" formControlName="postalCode" class="form-control">
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="form-group w-100">
+                        <label for="Quantity" class="">Quantity</label>
+                        <select name="" id="Quantity" [(ngModel)]='ngSelectQuantity' class="form-select" formControlName="quantity">
+                          <option  value="1">1</option>
+                          <option  value="2">2</option>
+                          <option  value="3">3</option>
+                          <option  value="4">4</option>
+                          <option  value="5">5</option>
+                          <option  value="6">6</option>
+                          <option  value="7">7</option>
+                          <option  value="8">8</option>
+                          <option  value="9">9</option>
+                          <option  value="10">10</option>
+                          <option  value="11">11</option>
+                          <option  value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="p-2"></div>
+                    <div class="form-group w-100">
+                        <label for="selectUser" class="">size</label>
+                        <select name="" id="Size" [(ngModel)]='ngSelectSize' class="form-select" formControlName="size">
+                          <option   value="XL" >XL</option>
+                          <option   value="L" >L</option>
+                          <option   value="M" >M</option>
+                          <option   value="S" >S</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductName">Product Name</label>
+                    <select name="" formControlName="productId" id="ProductName" class="form-select" [(ngModel)]="ngProductId">
+                      <option  *ngFor="let product of products" value="{{product?.id}}" >
+                       {{product?.productName}}
+                      </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" class="btn btn-outline-success float-right addBtn">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- {{AddOrder.value |json}} -->

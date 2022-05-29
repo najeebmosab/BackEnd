@@ -1,0 +1,82 @@
+.list-Sort:hover {
+    background-color: #007bff !important;
+    color: #fff;
+}
+
+.lists {
+    position: relative;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.list-Brands a {
+    padding: 0px 20px;
+}
+
+.list-Brands:hover {
+    background-color: #007bff !important;
+}
+
+.list-Brands:hover a {
+    color: #fff !important;
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#listing_pagination {
+    padding: 10px -20px;
+    float: right;
+}
+
+.card-header {
+    width: 100%;
+    border: none;
+}
+
+.myCard {
+    height: 80vh;
+}
+
+.cardImg {
+    height: 50vh;
+    object-fit: fill;
+    object-position: center center;
+}
+
+.shad {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    top: 0px;
+    z-index: 1;
+    height: 50vh;
+}
+
+.card-text {
+    font-size: 13px;
+}
+
+.priceDiv {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding-bottom: 10px;
+}
+
+.cartBTN {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+@media screen and (max-width:768px) {
+    .listSort {
+        height: auto;
+    }
+}

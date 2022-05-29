@@ -1,0 +1,16 @@
+<p-carousel [value]="Products" styleClass="custom-carousel text-center my-5 shadow p-3 mb-5 bg-white rounded" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="7000" [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+        <div class="product-item card mx-3">
+            <div class="product-item-content ">
+                <div class="">
+                    <img src="https://localhost:44342/images/products/{{product?.imageProduct}}" [alt]="product.name" class="product-image img-fluid" />
+                    <span class="Sale">Sale</span>
+                    <div class="shad" routerLink="/landing/View/ProductsDetails/{{product?.id}}" role="button"></div>
+                    <span class="iconCart" role="button" (click)="AddCart(product?.id)"><i class="fas fa-cart-plus"></i></span>
+                    <span class="iconeye" role="button" routerLink="/landing/View/ProductsDetails/{{product?.id}}"><i class="fas fa-eye"></i></span>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</p-carousel>

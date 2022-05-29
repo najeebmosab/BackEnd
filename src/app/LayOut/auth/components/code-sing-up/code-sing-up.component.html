@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-6 mt-3 AddProducts">
+            <div class="card-header">
+                <h4>
+                    Write Code From In Email
+                </h4>
+
+            </div>
+            <div *ngIf="massege !=''" class="alert alert-danger" role="alert">
+                {{massege}}
+            </div>
+            <form [formGroup]="CodeForm" (ngSubmit)="Check()" class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="form-group">
+                    <input type="text" formControlName="Code" class="form-control" id="CodeSingUp">
+                    <small *ngIf="CodeForm.controls?.Code?.touched && CodeForm.controls?.Code?.errors?.required" class="form-text  text-danger">
+                      Code Is Requierd
+                    </small>
+                    <small *ngIf="CodeForm.controls?.Code?.touched && CodeForm.controls?.Code?.errors?.maxLength" class="form-text  text-danger">
+                      The Max Length Is 4
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" [disabled]="CodeForm.invalid" class="btn btn-outline-success float-right addBtn">Check</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

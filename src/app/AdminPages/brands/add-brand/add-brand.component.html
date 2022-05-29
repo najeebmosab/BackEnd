@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngIf="massege" class="alert alert-success" role="alert">
+            {{massege}}
+        </div>
+
+        <div class="col-md-6 mt-3 AddBrand">
+            <div class="card-header">
+                <h4>
+                    Add Product
+                    <a href="" [routerLink]="['/Admin/Dashbord/Show-Brand']" role="button" class="float-right btn btn-sm btn-outline-danger text-danger">Back</a>
+                </h4>
+            </div>
+            <form [formGroup]="AddBrand" enctype="multipart/form-data" (ngSubmit)="AddBrands()" class="shadow-lg p-3 mb-5 bg-white rounded">
+
+                <div class="form-group">
+                    <label for="brandName">Brand Name</label>
+                    <input formControlName="name" id="brandName" type="text" class="form-control">
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="picture">Brand Image</label>
+                    <input formControlName="image" (change)="HandelFiles($event)" id="picture" type="file" class="form-control">
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="card-header2">
+                        <button type="submit" [disabled]="AddBrand.invalid" class="btn btn-outline-success float-right addBtn">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

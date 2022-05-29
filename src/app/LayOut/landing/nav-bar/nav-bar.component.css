@@ -1,0 +1,212 @@
+/* style for nav bar */
+
+.navbar {
+    padding: 0px 16px;
+}
+
+.LogoDiv {
+    width: 50%;
+    display: inline-block;
+}
+
+.LogoDiv ul {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.LogoDiv ul li {
+    padding: 0px 10px;
+}
+
+.IconDiv {
+    width: 50%;
+    display: inline-block;
+}
+
+.ButtonListMinueDiv {
+    display: none;
+}
+
+.IconDiv ul {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    direction: rtl;
+}
+
+.IconDiv ul li {
+    padding: 0px 10px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.logoSideBar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.search-box {
+    background: #ecedee;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.search-btn {
+    color: #000;
+    float: right;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+    border-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 2s;
+}
+
+.search-btn:hover {
+    text-decoration: none;
+}
+
+.search-btn2 {
+    color: #000;
+    float: left;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    background: transparent;
+    border-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 2s;
+}
+
+.search-btn2:hover {
+    text-decoration: none;
+}
+
+.search-input {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: #000;
+    font-size: 20px;
+    transition: 0.4s;
+    line-height: 50px;
+    width: 0;
+}
+
+.search-input2 {
+    border: none;
+    background: none;
+    outline: none;
+    float: right;
+    padding: 0;
+    color: #000;
+    font-size: 20px;
+    transition: 0.4s;
+    line-height: 50px;
+    width: 0;
+}
+
+@media screen and (max-width:900px) {
+    .search-box:hover>.search-input {
+        width: 150px !important;
+        padding: 0 7px;
+    }
+}
+
+.search-box:hover>.search-input {
+    width: 250px;
+    padding: 0 7px;
+}
+
+.search-box:hover>.search-input2 {
+    width: 200px;
+    padding: 0 7px;
+}
+
+.buttonListMinue {
+    display: none;
+}
+
+@media screen and (max-width:700px) {
+    .buttonListMinue {
+        display: block;
+    }
+    .ListMinue {
+        display: none;
+    }
+    .Minue ul li {
+        padding: 0px 10px;
+    }
+    #dropdownMenuButton {
+        display: none;
+    }
+    .smallScreen {
+        display: none;
+    }
+}
+
+.searchInputWrapper {
+    position: relative;
+}
+
+.searchInput {
+    width: 100%;
+    height: 2rem;
+    padding: 0 1rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #f9f9f9;
+    transition: transform 0.1s ease-in-out;
+}
+
+::placeholder {
+    color: #a1a1a1;
+}
+
+
+/* hide the placeholder text on focus */
+
+:focus::placeholder {
+    text-indent: -999px
+}
+
+.searchInput:focus {
+    outline: none;
+    transform: scale(1.1);
+    transition: all 0.1s ease-in-out;
+}
+
+.searchInputIcon {
+    position: absolute;
+    right: 0.8rem;
+    top: 0.2rem;
+    border: none;
+    background-color: transparent;
+    color: #a1a1a1;
+    transition: all 0.1s ease-in-out;
+}
+
+.MinueSideBar ul li {
+    padding: 10px 0px;
+}
+
+.dropdown-menu {
+    left: 84%;
+}

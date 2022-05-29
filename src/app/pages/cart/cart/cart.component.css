@@ -1,0 +1,73 @@
+.img-Cart {
+    width: 150px;
+    height: 150px;
+    object-fit: fill;
+    object-position: center;
+}
+
+.text-primary:hover {
+    color: #fff !important;
+}
+
+.checkoutCart {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .05);
+}
+
+@media screen and (max-width:768px) {
+    .checkoutCart {
+        height: 30vh;
+    }
+}
+
+.form-control {
+    width: 40px !important;
+    text-align: center;
+}
+
+.quantityInput {
+    width: 45px;
+}
+
+.MainImg {
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100vh !important;
+    vertical-align: middle;
+}
+
+.minusepluse {
+    border-radius: 50% !important;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.quantity {
+    width: 30px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+}
+
+[type='text']:focus {
+    box-shadow: none;
+}
+
+.buy_btn {
+    border: solid 1px;
+    padding: 10px;
+    color: #fff;
+    background-color: black;
+    transition: .7s;
+}
+
+.buy_btn:hover {
+    color: #000;
+    background-color: #fff;
+}
